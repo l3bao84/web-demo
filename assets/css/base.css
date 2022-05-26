@@ -209,6 +209,9 @@ html {
     line-height: 1.6rem;
     padding: 4px 0 0;
 }
-.invalid .form-message {
+.auth-form__group.invalid .form-message {
     color: #f33a58;
+}
+.auth-form__group.invalid .auth-form__input {
+    border-color: #f33a58;
 }
