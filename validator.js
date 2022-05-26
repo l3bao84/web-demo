@@ -1,10 +1,23 @@
 function Validator(options) {
 
+    var selectorRules = {}
+
     //Hàm validate
     function validate(inputElement, rule) {
-        var errorMessage = rule.test(inputElement.value)
+        var errorMessage
         var errorElement = inputElement.parentElement.querySelector(options.errorSelector)
-            if(errorMessage) {
+            
+        //Lấy ra các rules của selector
+        var rules = selectorRules[rule.selector]
+
+        //Lặp qua từng rules và kiểm tra
+        //Có lỗi dừng kiểm tra
+        for(var i = 0; i < rules.length; i++) {
+            errorMessage = rules[i](inputElement.value)
+            if(errorMessage) break
+        }
+
+        if(errorMessage) {
 
                 errorElement.innerText = errorMessage
                 inputElement.parentElement.classList.add('invalid')
@@ -19,7 +32,27 @@ function Validator(options) {
     var formElement = document.querySelector(options.form)
     if(formElement) {
 
+        //Ngăn chặn submit
+        formElement.onsubmit = function(e) {
+            e.preventDefault()
+
+            //Lặp qua từng rules và validate
+            options.rules.forEach(function(rule){
+                var inputElement = formElement.querySelector(rule.selector)
+                validate(inputElement,rule)
+            })
+        }
+
         options.rules.forEach(function(rule) {
+
+            //Lưu lại các rules
+            if(Array.isArray(selectorRules[rule.selector])) {
+
+                selectorRules[rule.selector].push(rule.test)
+            } else {
+
+                selectorRules[rule.selector] = [rule.test]
+            }
 
             var inputElement = formElement.querySelector(rule.selector)
             if(inputElement) {
@@ -36,6 +69,15 @@ function Validator(options) {
                 }
             }
         })
+    }
+}
+
+Validator.isRequired = function(selector) {
+    return {
+        selector: selector,
+        test: function(value) {
+            return value.trim() ? undefined : 'Vui lòng nhập trường này'
+        }
     }
 }
 

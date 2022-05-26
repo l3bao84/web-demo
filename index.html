@@ -925,20 +925,25 @@
             form: '#modal-register',
             errorSelector: '.form-message',
             rules: [
+                Validator.isRequired('#email'),
                 Validator.isEmail('#email'),
+                Validator.isRequired('#password'),
                 Validator.isPassword('#password'),
+                Validator.isRequired('#confirm-pw'),
                 Validator.isConfirmed('#confirm-pw', function() {
                     return document.querySelector('#modal-register #password').value
                 }),
             ]
        })
-
+ 
        //validate form login
        ValidatorLogin({
             form: '#modal-login',
             errorSelector: '.form-message',
             rules: [
+                ValidatorLogin.isRequired('#login-email'),
                 ValidatorLogin.isEmail('#login-email'),
+                ValidatorLogin.isRequired('#login-pw'),
                 ValidatorLogin.isPassword('#login-pw'),
             ]
        })
