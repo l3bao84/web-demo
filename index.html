@@ -918,7 +918,9 @@
     </form>
    <script src="./assets/app.js"></script>
    <script src="./validator.js"></script>
+   <script src="./validatorLogin.js"></script>
    <script>
+       //validate form register
        Validator({
             form: '#modal-register',
             errorSelector: '.form-message',
@@ -928,6 +930,16 @@
                 Validator.isConfirmed('#confirm-pw', function() {
                     return document.querySelector('#modal-register #password').value
                 }),
+            ]
+       })
+
+       //validate form login
+       ValidatorLogin({
+            form: '#modal-login',
+            errorSelector: '.form-message',
+            rules: [
+                ValidatorLogin.isEmail('#login-email'),
+                ValidatorLogin.isPassword('#login-pw'),
             ]
        })
    </script>
