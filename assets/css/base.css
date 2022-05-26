@@ -204,3 +204,11 @@ html {
 .hide {
     display: none;
 }
+.form-message {
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    padding: 4px 0 0;
+}
+.invalid .form-message {
+    color: #f33a58;
+}

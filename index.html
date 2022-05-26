@@ -816,7 +816,7 @@
 
     <!-- ---Modal layout--- -->
     <!-- Register -->
-    <div class="modal-register">
+    <form action="" method="post" id="modal-register" class="modal-register">
         <div class="modal__overlay"></div>
         <div class="modal__body">
             <div class="auth-form">
@@ -827,13 +827,16 @@
                     </div>
                     <div class="auth-form__form">
                         <div class="auth-form__group">
-                            <input type="text" class="auth-form__input" placeholder="Email">
+                            <input type="text" class="auth-form__input" id="email" placeholder="Email">
+                            <span class="form-message"></span>
                         </div>
                         <div class="auth-form__group">
-                            <input type="text" class="auth-form__input" placeholder="Password">
+                            <input type="text" class="auth-form__input" id="password" placeholder="Password">
+                            <span class="form-message"></span>
                         </div>
                         <div class="auth-form__group">
-                            <input type="text" class="auth-form__input" placeholder="Nhập lại Password">
+                            <input type="text" class="auth-form__input" id="confirm-pw" placeholder="Nhập lại Password">
+                            <span class="form-message"></span>
                         </div>
                     </div>
                     <div class="auth-form__aside">
@@ -863,7 +866,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </form>
     <!-- Login -->
     <div class="modal-login">
         <div class="modal__overlay"></div>
@@ -912,5 +915,15 @@
         </div>
     </div>
    <script src="./assets/app.js"></script>
+   <script src="./validator.js"></script>
+   <script>
+       Validator({
+            form: '#modal-register',
+            rules: [
+                Validator.isEmail('#email'),
+                Validator.isPassword('#password'),
+            ]
+       })
+   </script>
 </body>
 </html>
