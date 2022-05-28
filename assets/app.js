@@ -61,7 +61,7 @@ getData()
 filter.addEventListener('input', (e) => filterData(e.target.value))
 
 async function getData() {
-	const res = await fetch('https://fakestoreapi.com/products')
+	const res = await fetch('http://localhost:3000/product')
 
 	const results = await res.json()
 
