@@ -76,8 +76,8 @@ async function getData() {
 		div.innerHTML = `
 			<img src="${product.image}" alt="">
 			<div class="product-detail">
-				<h4>${product.title.slice(0, 30)}</h4>
-				<p>$${product.price}</p>
+				<h4>${product.title.slice(0, 100)}</h4>
+				<p>${product.price}k</p>
 			</div>
         `
 
