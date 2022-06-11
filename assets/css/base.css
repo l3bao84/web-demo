@@ -204,6 +204,16 @@ html {
 .hide {
     display: none;
 }
+.result {
+	position: absolute;
+	width: 300px;
+	height: 300px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.6);
+	border-radius: 50%;
+	overflow: hidden;
+	transform: translate(-50%, -50%);
+	pointer-events: none;
+}
 .form-message {
     font-size: 1.2rem;
     line-height: 1.6rem;
@@ -214,4 +224,11 @@ html {
 }
 .auth-form__group.invalid .auth-form__input {
     border-color: #f33a58;
+}
+
+.home-product-item__img:hover {
+    transform: scale(1.5);
+    overflow: hidden;
+    transition: all .3s ease;
+    border-radius: 50%;
 }

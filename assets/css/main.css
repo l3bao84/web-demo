@@ -873,13 +873,19 @@ h3 {
     transform: translateY(-1px);
     box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.05);
 }
-.home-product-item__img {
+.home-product-item__img{
     padding-top: 100%;
     background-repeat: no-repeat;
     background-size: contain;
     background-position: top center;
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
+}
+.home-product-item__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+	object-position: center;
 }
 .home-product-item__name {
     font-size: 1.4rem;
