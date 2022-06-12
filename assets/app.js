@@ -53,7 +53,7 @@ transformLogin.addEventListener('click', () => {
 
 //Find products
 const products = document.querySelector('.products')
-const filter = document.getElementById('filter')
+const filter = document.getElementsByClassName('header__search-input')
 const listItems = []
 
 getData()
